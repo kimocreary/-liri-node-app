@@ -34,11 +34,11 @@ function songName() {
     },function(error,data){
         if (error) throw error;
         console.log(data, "response from spotify api");
-        console.log("album url:",data.tracks.items[0].album.href);
-        console.log(data.tracks.items[0].artists[0].name);
-        console.log("album name:",data.tracks.items[0].album.name);
-        console.log(data.tracks.items[0].preview_url || data.tracks.items[0].href);
-        console.log(data.tracks.items[0].name);
+        console.log("album url:",data.tracks.items[1].album.href);
+        console.log(data.tracks.items[1].artists[0].name);
+        console.log("album name:",data.tracks.items[1].album.name);
+        console.log(data.tracks.items[1].preview_url || data.tracks.items[0].href);
+        console.log(data.tracks.items[1].name);
     }
     );
 }
@@ -49,14 +49,24 @@ function movieTitle() {
         console.log(response.data)
     })
 }
+
 function artistShowDetails() {
     var searchConcert = searchString || "Chris Brown"
+    console.log(searchConcert)
     var queryUrl = "https://rest.bandsintown.com/artists/" + searchConcert + "/events?app_id=codingbootcamp";
     axios.get(queryUrl).then(function(response){
-        console.log(response.data)
+        console.log(response)
+       for (var i = 0; i < response.data.length; i++) { 
+        // console.log(response.data)
+        console.log(response.data[i].venue.name, 'venue name')
+        console.log(response.data[i].venue.city, 'venue location')
+       console.log(response.data[i].datetime, 'date of event')
+       console.log("********\n")
         // response.data and navigate items
-    })
-}
+       };
+    });
+};
+
 function executeCommand() {
     fs.readFile("random.txt","utf8",function(error,data){
         if (error) throw error;
