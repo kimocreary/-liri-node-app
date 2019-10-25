@@ -33,40 +33,47 @@ function songName() {
          query: searchSong
     },function(error,data){
         if (error) throw error;
-        console.log(data, "response from spotify api");
-        console.log("album url:",data.tracks.items[1].album.href);
-        console.log(data.tracks.items[1].artists[0].name);
-        console.log("album name:",data.tracks.items[1].album.name);
-        console.log(data.tracks.items[1].preview_url || data.tracks.items[0].href);
-        console.log(data.tracks.items[1].name);
+        // console.log(data, "response from spotify api");
+        for(let i = 0; i < data.tracks.items.length; i++){
+            console.log("Album url:",data.tracks.items[i].album.href);
+            console.log("Artist Name:",data.tracks.items[i].artists.map(allArtistName));
+            console.log("album name:",data.tracks.items[i].album.name);
+            console.log("Href:",data.tracks.items[i].preview_url || data.tracks.items[0].href);
+            console.log(data.tracks.items[i].name);
+        }
+        
     }
     );
 }
 function movieTitle() {
-    var searchMovie = searchString || "Armageddon"
+    var searchMovie = searchString || "Mr. Nobody"
     var queryUrl = "http://www.omdbapi.com/?t=" + searchMovie + "&y=&plot=full&tomatoes=true&apikey=trilogy"; 
     axios.get(queryUrl).then(function(response){
-        console.log(response.data)
+        // console.log(response.data)
+        console.log("Title:",response.data.Title)
+        console.log("Year:",response.data.Year)
+        console.log("IMDB Rating:",response.data.imdbRating)
+        console.log("Rotten Tomatoes Rating:",response.data.Ratings[1].Value)
+        console.log("Country Where Movie Was Produced:",response.data.Country)
+        console.log("Actors:",response.data.Actors)
+        console.log("Plot:",response.data.Plot)
+        console.log("********\n")
     })
 }
-
 function artistShowDetails() {
     var searchConcert = searchString || "Chris Brown"
-    console.log(searchConcert)
     var queryUrl = "https://rest.bandsintown.com/artists/" + searchConcert + "/events?app_id=codingbootcamp";
     axios.get(queryUrl).then(function(response){
-        console.log(response)
-       for (var i = 0; i < response.data.length; i++) { 
-        // console.log(response.data)
-        console.log(response.data[i].venue.name, 'venue name')
-        console.log(response.data[i].venue.city, 'venue location')
-       console.log(response.data[i].datetime, 'date of event')
-       console.log("********\n")
+        console.log(response.data)
+        for(var i=0; i<response.data.length; i++){
+            console.log(response.data[i].venue.name);
+            console.log(response.data[i].venue.city);
+            console.log(moment(response.data[i].datetime).format("MM/DD/YY"));
+            console.log("********\n")
+        }
         // response.data and navigate items
-       };
-    });
-};
-
+    })
+}
 function executeCommand() {
     fs.readFile("random.txt","utf8",function(error,data){
         if (error) throw error;
@@ -78,3 +85,7 @@ function executeCommand() {
         }
     })
 }
+function allArtistName(artist){
+    return artist.name
+}
+
