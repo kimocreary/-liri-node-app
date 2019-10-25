@@ -35,11 +35,12 @@ function songName() {
         if (error) throw error;
         // console.log(data, "response from spotify api");
         for(let i = 0; i < data.tracks.items.length; i++){
-            console.log("Album url:",data.tracks.items[i].album.href);
+            console.log(data.tracks.items[i].name);
             console.log("Artist Name:",data.tracks.items[i].artists.map(allArtistName));
             console.log("album name:",data.tracks.items[i].album.name);
             console.log("Href:",data.tracks.items[i].preview_url || data.tracks.items[0].href);
-            console.log(data.tracks.items[i].name);
+            console.log("Album url:",data.tracks.items[i].album.href);
+            console.log("********\n")
         }
         
     }
@@ -64,7 +65,7 @@ function artistShowDetails() {
     var searchConcert = searchString || "Chris Brown"
     var queryUrl = "https://rest.bandsintown.com/artists/" + searchConcert + "/events?app_id=codingbootcamp";
     axios.get(queryUrl).then(function(response){
-        console.log(response.data)
+        // console.log(response.data)
         for(var i=0; i<response.data.length; i++){
             console.log(response.data[i].venue.name);
             console.log(response.data[i].venue.city);
