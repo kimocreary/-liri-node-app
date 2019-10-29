@@ -12,8 +12,13 @@ By going to node liri.js spotify-this and a song title in terminal, you can find
 
 By going to node liri.js movie-this and a movie title in terminal, you can get the title of a movie, the year the movie came out, the rotten tomatoes rating of the movie, the country where the movie was produced, the language of the movie, the plot of the movie, and the actors in the movie.  If the user does not type in a movie the output will be data for the movie 'Mr. Nobody'.
 
+https://kimocreary.github.io/-liri-node-app/
 
+/Users/kimberlyncreary/Desktop/Screen Shot 2019-10-27 at 10.07.53 PM.png
 
-
-
-
+<img src="assets/ConertThis" alt="ConcertThis" height="42" width="42">
+<img src="assets/DoWhatImg" alt="DoWhatItSays" height="42" width="42">
+<img src="assets/MovieThis" alt="MovieThis" height="42" width="42">
+<img src="assets/NamedMovie" alt="NamedMovie" height="42" width="42">
+<img src="assets/SpotifyImg" alt="SpotifyImg" height="42" width="42">
+<img src="assets/NamedSpotify" alt="SpotifyImg" height="42" width="42">
